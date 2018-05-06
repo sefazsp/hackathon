@@ -22,3 +22,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home', 'PropostaController@show');
 
 Route::post('/concorrentes', 'EncerradasController@concorrentes');
+Route::post('/competitividade', 'EncerradasController@competitividade');

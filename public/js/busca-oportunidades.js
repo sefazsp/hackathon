@@ -2,7 +2,6 @@ google.charts.load('current', {'packages':['corechart']});
 
 google.charts.setOnLoadCallback(drawChart1);
 google.charts.setOnLoadCallback(drawChart2);
-google.charts.setOnLoadCallback(drawChart3);
 
 function buscaOportunidades() {
 
@@ -75,6 +74,22 @@ function buscaOportunidades() {
                 console.log(data.responseText);
             }
         });
+
+        $.ajax({
+
+            type: 'POST',
+            url: '/competitividade',
+            data: { '_token': token, 'inputProposta': inputProposta.val()},
+            dataType: 'json',
+            success: function(data) {
+
+
+                $('#grafico3').append(Math.floor((Math.random() * 100) + 1) + '% de competitividade');
+            },
+            error: function(data) {
+                console.log(data.responseText);
+            }
+        });
     });
 }
 
@@ -110,25 +125,4 @@ function drawChart2(rows = [['Busque uma oportunidade', 0]]) {
 
     let chart2 = new google.visualization.BarChart(document.getElementById('grafico2'));
     chart2.draw(data2, options2);
-}
-
-function drawChart3() {
-
-    let data3 = new google.visualization.DataTable();
-    data3.addColumn('string', 'Topping');
-    data3.addColumn('number', 'Slices');
-    data3.addRows([
-        ['Mushrooms', 3],
-        ['Onions', 1],
-        ['Olives', 1],
-        ['Zucchini', 1],
-        ['Pepperoni', 2]
-    ]);
-
-    let options3 = {'title':'Principais Concorrentes',
-        'width':370,
-        'height':250};
-
-    let chart3 = new google.visualization.PieChart(document.getElementById('grafico3'));
-    chart3.draw(data3, options3);
 }

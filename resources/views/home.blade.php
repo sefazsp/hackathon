@@ -16,9 +16,14 @@
             </div>
         </div>
         <div class="col-sm-4">
-            <div class="card">
-                <div id="grafico3" class="card-body">
+            <div class="card" style="height: 293px;">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Indice de competitividade</h5>
+                    <div id="grafico3" class="card-body text-center">
+
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
